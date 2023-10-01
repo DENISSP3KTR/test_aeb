@@ -11,5 +11,6 @@ namespace test_aeb.Context
 
         }
         public DbSet<ToDo_model> ToDo_models { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

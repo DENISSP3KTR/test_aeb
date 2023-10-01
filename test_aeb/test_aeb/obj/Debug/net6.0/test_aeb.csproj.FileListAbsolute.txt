@@ -52,3 +52,15 @@ D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\System.CodeDom.dll
 D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\System.Text.Json.dll
 D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\github\test_aeb\test_aeb\test_aeb\obj\Debug\net6.0\test_aeb.Properties.Resources.resources
+D:\github\test_aeb\test_aeb\test_aeb\obj\Debug\net6.0\test_aeb.csproj.GenerateResource.cache
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\AutoMapper.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\FluentValidation.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+D:\github\test_aeb\test_aeb\test_aeb\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll

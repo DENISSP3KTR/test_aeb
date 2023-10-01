@@ -10,23 +10,16 @@ namespace test_aeb.Controllers
     public class ToDoController : ControllerBase
     {
         private readonly ToDo_Context _context;
-
-        public ToDoController(ToDo_Context context)
+        private readonly IMapper _mapper;
+        public ToDoController(ToDo_Context context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-
-        //private static List<ToDo_model> Task = new List<ToDo_model>
-        //    {
-        //        new ToDo_model { Id = 1,
-        //            Title="Сделай тестовое задание",
-        //            Description="Тестовое задание для АЭБ",
-        //            Create_Time = DateTime.Now,
-        //            Due_Time = new DateTime(2023, 10, 2),
-        //            Completion_Time = new DateTime(2023, 10, 1),
-        //            status = Status.in_work
-        //        }
-        //    };
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<List<ToDo_model>>> GetTasks() 
         {
@@ -36,10 +29,6 @@ namespace test_aeb.Controllers
         public async Task<ActionResult<ToDo_model>> GetTask(int id) 
         {
             var task = await _context.ToDo_models.FindAsync(id);
-            if (task == null)
-            {
-                return BadRequest("Задача с таким идентификатором не найдена");
-            }
             return Ok(task);
         }
         [HttpPost]
@@ -48,7 +37,6 @@ namespace test_aeb.Controllers
             task.Create_Time = DateTime.UtcNow;
             task.status = Status.created;
             task.Due_Time = task.Due_Time.ToUniversalTime();
-            task.Completion_Time = task.Completion_Time.ToUniversalTime();
             _context.ToDo_models.Add(task);
             await _context.SaveChangesAsync();
             return Ok(await _context.ToDo_models.ToListAsync());
@@ -66,7 +54,10 @@ namespace test_aeb.Controllers
             task.status = request.status;
             task.Create_Time = request.Create_Time;
             task.Due_Time = request.Due_Time.ToUniversalTime();
-            task.Completion_Time = request.Completion_Time.ToUniversalTime();
+            if (request.status == Status.completed)
+            {
+                task.Completion_Time = DateTime.UtcNow;
+            }
 
             await _context.SaveChangesAsync();
 

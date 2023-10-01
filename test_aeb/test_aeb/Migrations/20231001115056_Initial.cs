@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace test_aeb.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,12 +22,27 @@ namespace test_aeb.Migrations
                     Description = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
                     Due_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Create_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Completion_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Completion_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     status = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ToDo_models", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Username = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: false),
+                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
         }
 
@@ -36,6 +51,9 @@ namespace test_aeb.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ToDo_models");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

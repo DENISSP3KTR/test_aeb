@@ -12,8 +12,8 @@ using test_aeb.Context;
 namespace test_aeb.Migrations
 {
     [DbContext(typeof(ToDo_Context))]
-    [Migration("20230930061324_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231001115056_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace test_aeb.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("Completion_Time")
+                    b.Property<DateTime?>("Completion_Time")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("Create_Time")
@@ -58,6 +58,31 @@ namespace test_aeb.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ToDo_models");
+                });
+
+            modelBuilder.Entity("test_aeb.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

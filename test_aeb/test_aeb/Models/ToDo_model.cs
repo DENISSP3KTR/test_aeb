@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
+using AutoMapper;
 namespace test_aeb.Models
 {
     public enum Status
@@ -39,9 +40,8 @@ namespace test_aeb.Models
         public DateTime Create_Time { get; set; }
 
         //Дата завершения
-        [Required]
         [DataType(DataType.Date)]
-        public DateTime Completion_Time { get; set; }
+        public DateTime? Completion_Time { get; set; }
 
         //Статус выполнения задачи
         [Required]
