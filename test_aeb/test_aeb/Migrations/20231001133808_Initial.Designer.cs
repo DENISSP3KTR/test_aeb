@@ -12,7 +12,7 @@ using test_aeb.Context;
 namespace test_aeb.Migrations
 {
     [DbContext(typeof(ToDo_Context))]
-    [Migration("20231001115056_Initial")]
+    [Migration("20231001133808_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

@@ -46,17 +46,5 @@ namespace test_aeb.Models
         //Статус выполнения задачи
         [Required]
         public Status status { get; set; }
-        [NotMapped]
-        public string StatusAccess
-        {
-            get
-            {
-                return DescriptionAttributes<Status>.RetrieveAttributesReverse()[status.ToString()];
-            }
-        }
-        public override string ToString()
-        {
-            return Title;
-        }
     }
 }
