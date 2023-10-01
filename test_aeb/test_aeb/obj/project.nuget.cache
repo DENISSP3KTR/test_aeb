@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cbHMwIeoplVOdU46oLxLo1v8tcVCE55DoBbY3R40vBZmIMmKZ58+kQLWCs5baRgVtDjend81ilD5clM3WsLKvw==",
+  "dgSpecHash": "Jy2xOfQxSURfn0ZG/D38pgX/tkDPePMmgeQxwkL/w5WQl8d0fGyb10N/YGPGv4y9bn0OmsMNT0ySFdj3AFvawA==",
   "success": true,
   "projectFilePath": "D:\\github\\test_aeb\\test_aeb\\test_aeb\\test_aeb.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,7 @@
     "C:\\Users\\ds\\.nuget\\packages\\microsoft.identitymodel.logging\\7.0.2\\microsoft.identitymodel.logging.7.0.2.nupkg.sha512",
     "C:\\Users\\ds\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.0.2\\microsoft.identitymodel.tokens.7.0.2.nupkg.sha512",
     "C:\\Users\\ds\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\ds\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\ds\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\ds\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\ds\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",

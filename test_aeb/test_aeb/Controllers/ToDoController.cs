@@ -29,6 +29,11 @@ namespace test_aeb.Controllers
         public async Task<ActionResult<ToDo_model>> GetTask(int id) 
         {
             var task = await _context.ToDo_models.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
             return Ok(task);
         }
         [HttpPost]
@@ -47,7 +52,7 @@ namespace test_aeb.Controllers
             var task = await _context.ToDo_models.FindAsync(request.Id);
             if (task == null)
             {
-                return BadRequest("Задача с таким идентификатором не найдена");
+                return NotFound("Задача с таким идентификатором не найдена");
             }
             task.Title = request.Title;
             task.Description = request.Description;
@@ -69,7 +74,7 @@ namespace test_aeb.Controllers
             var task = await _context.ToDo_models.FindAsync(id);
             if (task == null)
             {
-                return BadRequest("Задача с таким идентификатором не найдена");
+                return NotFound("Задача с таким идентификатором не найдена");
             }
             _context.ToDo_models.Remove(task);
             await _context.SaveChangesAsync();
