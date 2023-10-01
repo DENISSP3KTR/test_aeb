@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  backend:
+    image: ${DOCKER_REGISTRY-}testaeb
+    build:
+      context: .
+      dockerfile: test_aeb/Dockerfile
+  client:
+    image: client
+    build:
+      context: ./test_aeb_client
+      dockerfile: Dockerfile
+  proxy:
+    image: nginx:mainline  
