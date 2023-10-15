@@ -1,28 +1,26 @@
 global using Microsoft.EntityFrameworkCore;
-global using test_aeb;
-global using test_aeb.Context;
+global using TestAEB;
+global using TestAEB.Context;
 global using AutoMapper;
-global using test_aeb.Mapper;
+global using TestAEB.Mapper;
 using FluentValidation.AspNetCore;
-using test_aeb.Models;
-using test_aeb.Validators;
+using TestAEB.Models;
+using TestAEB.Validators;
 using FluentValidation;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services
-    .AddControllers()
+builder.Services.AddControllers()
     .AddFluentValidation(x =>
     {
         x.ImplicitlyValidateChildProperties = true;
     });
 
-builder.Services.AddTransient<IValidator<ToDo_model>, TaskValidator>();
+builder.Services.AddTransient<IValidator<ToDoModel>, TaskValidator>();
 
-builder.Services.AddDbContext<ToDo_Context>(options =>
+builder.Services.AddDbContext<ToDoContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("ToDoConnection"));
 });
@@ -56,12 +54,9 @@ if (app.Environment.IsDevelopment())
         config.SwaggerEndpoint("swagger/v1/swagger.json", "ToDo API");
     });
 }
+
 app.UseCors("CorsPolicy");
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

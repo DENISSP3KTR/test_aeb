@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace test_aeb.Migrations
+namespace TestAEB.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -13,21 +13,21 @@ namespace test_aeb.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ToDo_models",
+                name: "ToDoModels",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
-                    Due_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Create_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Completion_Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    status = table.Column<int>(type: "integer", nullable: false)
+                    DueTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CompletionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Status = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ToDo_models", x => x.Id);
+                    table.PrimaryKey("PK_ToDoModels", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,7 +50,7 @@ namespace test_aeb.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ToDo_models");
+                name: "ToDoModels");
 
             migrationBuilder.DropTable(
                 name: "Users");

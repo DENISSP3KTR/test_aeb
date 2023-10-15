@@ -4,22 +4,32 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using test_aeb.Models;
+using TestAEB.Models;
 
-namespace test_aeb.Controllers
+namespace TestAEB.Controllers
 {
+    /// <summary>
+    /// Controller for user authentication and authorization.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public static User user = new User();
+        private readonly User user = new User();
         private readonly IConfiguration _conf;
-
+        /// <summary>
+        /// auth controller constructor
+        /// </summary>
+        /// <param name="conf">Application Configuration</param>
         public AuthController(IConfiguration conf)
         {
             _conf = conf;
         }
-
+        /// <summary>
+        /// Registers a new user and returns information about him.
+        /// </summary>
+        /// <param name="request">User data for registration</param>
+        /// <returns>Information about the registered user</returns>
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserDTO request)
         {
@@ -31,6 +41,11 @@ namespace test_aeb.Controllers
 
             return Ok(user);
         }
+        /// <summary>
+        /// User authentication and generation of a JWT token for authorization
+        /// </summary>
+        /// <param name="request">User data for authentication</param>
+        /// <returns>JWT token in case of successful authentication</returns>
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDTO request)
         {
@@ -38,7 +53,7 @@ namespace test_aeb.Controllers
             {
                 return BadRequest("Пользователь не найден");
             }
-            if (!passHashBool(request.Password, user.PasswordHash, user.PasswordSalt))
+            if (!PassHashBool(request.Password, user.PasswordHash, user.PasswordSalt))
             {
                 return BadRequest("Пароль не совпадает");
             }
@@ -46,6 +61,11 @@ namespace test_aeb.Controllers
 
             return Ok(token);
         }
+        /// <summary>
+        /// Creates a JWT token based on user information
+        /// </summary>
+        /// <param name="user">The user for whom the token is being created</param>
+        /// <returns>Generated JWT token</returns>
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
@@ -66,7 +86,13 @@ namespace test_aeb.Controllers
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return jwt;
         }
-        private void PassHasher(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        /// <summary>
+        /// Hashes the users password and creates Salt
+        /// </summary>
+        /// <param name="password">user password</param>
+        /// <param name="passwordHash">password hash</param>
+        /// <param name="passwordSalt">salt password</param>
+        private static void PassHasher(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using(var hmac = new HMACSHA256())
             {
@@ -74,7 +100,14 @@ namespace test_aeb.Controllers
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
-        private bool passHashBool (string password, byte[] passHash, byte[] passSalt) 
+        /// <summary>
+        /// Checks whether the password hash matches the hash in the database
+        /// </summary>
+        /// <param name="password">password to check</param>
+        /// <param name="passHash">password hash from the database</param>
+        /// <param name="passSalt">password-related salt</param>
+        /// <returns>True if the password matches the hash in the database, otherwise false</returns>
+        private static bool PassHashBool(string password, byte[] passHash, byte[] passSalt) 
         {
             using(var hmac = new HMACSHA256(passSalt))
             {

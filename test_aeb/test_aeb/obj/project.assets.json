@@ -2040,9 +2040,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\github\\test_aeb\\test_aeb\\test_aeb\\test_aeb.csproj",
-      "projectName": "test_aeb",
-      "projectPath": "D:\\github\\test_aeb\\test_aeb\\test_aeb\\test_aeb.csproj",
+      "projectUniqueName": "D:\\github\\test_aeb\\test_aeb\\test_aeb\\TestAEB.csproj",
+      "projectName": "TestAEB",
+      "projectPath": "D:\\github\\test_aeb\\test_aeb\\test_aeb\\TestAEB.csproj",
       "packagesPath": "C:\\Users\\ds\\.nuget\\packages\\",
       "outputPath": "D:\\github\\test_aeb\\test_aeb\\test_aeb\\obj\\",
       "projectStyle": "PackageReference",

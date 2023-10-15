@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace test_aeb.Mapper
+namespace TestAEB.Mapper
 {
     public class UserDTO
     {

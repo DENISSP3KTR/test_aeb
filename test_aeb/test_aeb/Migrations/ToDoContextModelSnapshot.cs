@@ -2,21 +2,18 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using test_aeb.Context;
+using TestAEB.Context;
 
 #nullable disable
 
-namespace test_aeb.Migrations
+namespace TestAEB.Migrations
 {
-    [DbContext(typeof(ToDo_Context))]
-    [Migration("20231001133808_Initial")]
-    partial class Initial
+    [DbContext(typeof(ToDoContext))]
+    partial class ToDoContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,7 @@ namespace test_aeb.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("test_aeb.Models.ToDo_model", b =>
+            modelBuilder.Entity("TestAEB.Models.ToDoModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,10 +30,10 @@ namespace test_aeb.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("Completion_Time")
+                    b.Property<DateTime?>("CompletionTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("Create_Time")
+                    b.Property<DateTime>("CreateTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
@@ -44,23 +41,23 @@ namespace test_aeb.Migrations
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)");
 
-                    b.Property<DateTime>("Due_Time")
+                    b.Property<DateTime>("DueTime")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
-                    b.Property<int>("status")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.ToTable("ToDo_models");
+                    b.ToTable("ToDoModels");
                 });
 
-            modelBuilder.Entity("test_aeb.Models.User", b =>
+            modelBuilder.Entity("TestAEB.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

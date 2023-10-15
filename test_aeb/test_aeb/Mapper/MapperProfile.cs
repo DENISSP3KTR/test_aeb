@@ -1,12 +1,12 @@
-﻿using test_aeb.Models;
+﻿using TestAEB.Models;
 
-namespace test_aeb.Mapper
+namespace TestAEB.Mapper
 {
     public class MapperProfile : Profile
     {
         public MapperProfile()
         {
-            CreateMap<ToDo_model, ToDoDTO>();
+            CreateMap<ToDoModel, ToDoDTO>();
         }
     }
 }

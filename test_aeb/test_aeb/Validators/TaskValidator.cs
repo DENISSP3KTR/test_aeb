@@ -1,10 +1,16 @@
 ﻿using FluentValidation;
-using test_aeb.Models;
+using TestAEB.Models;
 
-namespace test_aeb.Validators
+namespace TestAEB.Validators
 {
-    public class TaskValidator : AbstractValidator<ToDo_model>
+    /// <summary>
+    /// Validator for the ToDoModel
+    /// </summary>
+    public class TaskValidator : AbstractValidator<ToDoModel>
     {
+        /// <summary>
+        /// Constructor for Validator
+        /// </summary>
         public TaskValidator()
         {
             RuleFor(x=>x.Title)
@@ -17,12 +23,12 @@ namespace test_aeb.Validators
                 .WithMessage("Описание задачи не может быть пустым")
                 .MaximumLength(1024)
                 .WithMessage("Описание задачи должен содержать не более 1024 символов");
-            RuleFor(x=>x.Due_Time)
+            RuleFor(x=>x.DueTime)
                 .GreaterThan(DateTime.UtcNow)
                 .WithMessage("Дата выполнения задачи должна быть в будущем");
-            RuleFor(x=>x.Completion_Time)
+            RuleFor(x=>x.CompletionTime)
                 .GreaterThan(DateTime.UtcNow);
-            RuleFor(x=>x.Create_Time).NotEmpty();
+            RuleFor(x=>x.CreateTime).NotEmpty();
         }
     }
 }
