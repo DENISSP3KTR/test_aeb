@@ -895,3 +895,5 @@ $RECYCLE.BIN/
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,csharp,vs,windows,aspnetcore,dotnetcore
+
+test_aeb/test_aeb/obj/
