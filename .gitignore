@@ -896,4 +896,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,csharp,vs,windows,aspnetcore,dotnetcore
 
-test_aeb/test_aeb/obj/
+test_aeb/test_aeb/obj
